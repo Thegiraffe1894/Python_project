@@ -1,7 +1,7 @@
 import pandas as pd # type: ignore
-import json
+#import json
 
-doc = pd.read_csv('AuF condition Check.csv')
+doc = pd.read_csv('condition autocase.csv')
 print(doc.head())
 print(len(doc))
 
@@ -13,16 +13,16 @@ vect = CountVectorizer(stop_words='english')
 vect.fit(X)
 
 
-voc = str(vect.vocabulary_)
-voc1 = eval(voc)
+voc = vect.vocabulary_
+#voc1 = eval(voc)
 #voc1 =json.dumps(voc)
-for row in list(voc1):
+for row in list(voc):
     #if 'short_description' in row:
        # voc1.pop(row)
     if len(row) != 32 or 'short_description' in row:
-        voc1.pop(row)
+        voc.pop(row)
 
-for row in voc1:
+for row in voc:
     print(row)
 
 #print(voc1)
@@ -30,8 +30,8 @@ import csv
 header = ["keywords","itr"]
 with open('KeyWord.csv', 'w') as file:
     writer = csv.DictWriter(file, fieldnames=header)
-    writer.writeheader
-    for row in voc1:
+    writer.writeheader()
+    for row in voc:
         writer.writerow(row)
 #print(voc)
 #first_col = list(voc.keys())
