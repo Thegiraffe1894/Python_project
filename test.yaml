@@ -1,1 +1,9 @@
 
+---
+- hosts: all
+  tasks:
+  - name: Test Echo command
+    shell: "echo 'Test complete'"
+ 
+  - name: Test Echo command
+    shell: echo "Please assign the incident to 'TPEECOGPROV'"
